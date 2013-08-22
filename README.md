@@ -52,7 +52,7 @@ e.trigger('custom_event');
  	
 	- **event_name** - [ _string_ ] _(required)_ - Name of the event to triggrt.
 
-- `off(callback)` :  
+- `off(event_name,callback)` :  
  	
   	Removes a function assigned to an event.
   	
