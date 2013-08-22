@@ -3,34 +3,35 @@
 A simple JavaScript event listner class, written in CoffeeScript.
 
 ### Example Usage
+ ```javascript
+//create functions to trigger
+function print1 () {
+	console.log('Printing 1');
+}
 
-	//create functions to trigger
-	function print1 () {
-		console.log('Printing 1');
-	}
+function print2 () {
+	console.log('Printing 2');
+}
 
-	function print2 () {
-		console.log('Printing 2');
-	}
+//Initialize a new EventListener object
+var e = new EventListener();
+//Assign print1 & print2 on "custom_event"
+e.on('custom_event',print1).on('custom_event',print2);
 
-	//Initialize a new EventListener object
-	var e = new EventListener();
-	//Assign print1 & print2 on "custom_event"
-	e.on('custom_event',print1).on('custom_event',print2);
+//trigger the "custom_event"
+e.trigger('custom_event');
+//OUTPUT:
+//Printing 1
+//Printing 2
 
-	//trigger the "custom_event"
-	e.trigger('custom_event');
-	//OUTPUT:
-	//Printing 1
-	//Printing 2
+//Remove the "print1" event from "custom_event"
+e.off('custom_event',print1);
 
-	//Remove the "print1" event from "custom_event"
-	e.off('custom_event',print1);
-
-	//trigger "custom_event" again
-	e.trigger('custom_event'); 
-	//OUTPUT:
-	//Printing 2
+//trigger "custom_event" again
+e.trigger('custom_event'); 
+//OUTPUT:
+//Printing 2
+ ```
 	
 	
 ### Methods
