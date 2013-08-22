@@ -1,5 +1,13 @@
-class EventListner
-  EventListner::on = (type, method, scope, context) ->
+###
+  FacebookConnect: Facebook SDK helper class
+  http://stephan.steynfaardt.com
+
+  Copyright (c) 2013 Stephan Steynfaardt
+  Released under the MIT license
+  http://opensource.org/licenses/MIT
+###
+class EventListener
+  EventListener::on = (type, method, scope, context) ->
     listeners = @listeners = {}  unless listeners = @listeners
     handlers = listeners[type] = []  unless handlers = listeners[type]
     scope = ((if scope then scope else window))
@@ -7,9 +15,10 @@ class EventListner
       method: method
       scope: scope
       context: ((if context then context else scope))
+    @
 
 
-  EventListner::trigger = (type, data, context) ->
+  EventListener::trigger = (type, data, context) ->
     return  unless listeners = @listeners
     return  unless handlers = listeners[type]
     i = 0
@@ -21,7 +30,7 @@ class EventListner
       i++
     true
 
-  EventListner::off = (type, method) ->
+  EventListener::off = (type, method) ->
     return  unless listeners = @listeners
     return  unless handlers = listeners[type]
     found = false
